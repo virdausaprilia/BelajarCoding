@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minuman Segar - Delicious Foods</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 25%, #32cd32 50%, #1e90ff 75%, #9370db 100%); /* Gradien warna-warni cerah untuk kesan minuman yang hidup */
+            color: #fff;
+            text-align: center;
+            min-height: 100vh;
+            animation: backgroundShift 10s ease-in-out infinite; /* Animasi latar belakang */
+        }
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .nav-buttons.right {
+            left: auto;
+            right: 20px;
+        }
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #ffd700;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            opacity: 0.7;
+        }
+        .nav-button:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        .nav-button.left::before {
+            content: '←'; /* Panah kiri */
+        }
+        .nav-button.right::before {
+            content: '→'; /* Panah kanan */
+        }
+        h1 {
+            font-size: 3.5em;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        header p {
+            font-size: 1.4em;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px;
+            gap: 20px;
+        }
+        .item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            cursor: pointer; /* Membuat item bisa diklik */
+        }
+        .item:nth-child(odd) { animation-delay: 0.6s; }
+        .item:nth-child(even) { animation-delay: 0.8s; }
+        .item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .item img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .item:hover img {
+            transform: scale(1.1);
+        }
+        .item h3 {
+            color: #ffd700;
+            margin-top: 15px;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .item p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        footer {
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 1em;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .item { width: 90%; }
+            header { margin: 15px; padding: 30px 20px; }
+            .nav-buttons { display: none; } /* Sembunyikan tombol navigasi di mobile untuk kesederhanaan */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-buttons">
+            <button class="nav-button left" onclick="window.location.href='index.html'" title="Kembali ke Beranda"></button>
+        </div>
+        <h1>Minuman Segar Kami</h1>
+        <p>Nikmati berbagai minuman yang menyegarkan hari Anda!</p>
+        <div class="nav-buttons right">
+            <button class="nav-button right" onclick="window.location.href='makanan.html'" title="Lihat Makanan"></button>
+        </div>
+    </header>
+    
+    <div class="menu">
+        <div class="item" onclick="window.open('detail-cappuccino.html', '_blank')">
+            <img src="cappucino.jpg" alt="Cappuccino" onerror="this.src='https://via.placeholder.com/280x180/ff6b6b/ffffff?text=Cappuccino'">
+            <h3>Cappuccino</h3>
+            <p>Kopi espresso dengan susu steamed dan busa susu.</p>
+        </div>
+        <div class="item" onclick="window.open('detail-smoothie.html', '_blank')">
+            <img src="berrysmoothy.jpg" alt="Smoothie Berry" onerror="this.src='https://via.placeholder.com/280x180/ffa500/ffffff?text=Smoothie'">
+            <h3>Smoothie Berry</h3>
+            <p>Minuman segar dari campuran beri, yogurt, dan madu.</p>
+        </div>
+        <div class="item" onclick="window.open('detail-tea.html', '_blank')">
+            <img src="images (3).jpg" alt="Tea Green" onerror="this.src='https://via.placeholder.com/280x180/32cd32/ffffff?text=Tea'">
+            <h3>Tea Green</h3>
+            <p>Teh hijau panas dengan aroma alami dan manfaat kesehatan.</p>
+        </div>
+        <div class="item" onclick="window.open('detail-juice.html', '_blank')">
+            <img src="images (4).jpg" alt="Juice Orange" onerror="this.src='https://via.placeholder.com/280x180/1e90ff/ffffff?text=Juice'">
+            <h3>Juice Orange</h3>
+            <p>Jus jeruk segar, kaya vitamin C untuk energi seharian.</p>
+        </div>
+        <!-- Tambahan item untuk lebih lengkap -->
+        <div class="item" onclick="window.open('detail-lemonade.html', '_blank')">
+            <img src="Lemonade-Recipe-10.jpg" alt="Lemonade">
+            <h3>Lemonade</h3>
+            <p>Minuman lemon segar dengan sedikit madu untuk rasa manis alami.</p>
+        </div>
+        <div class="item" onclick="window.open('detail-mojito.html', '_blank')">
+            <img src="mojito.jpg" alt="Mojito">
+            <h3>Mojito</h3>
+            <p>Koktail minty dengan rum, soda, dan jeruk nipis.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Delicious Foods. Dibuat dengan cinta oleh Grok AI.</p>
+    </footer>
+</body>
+</html>
